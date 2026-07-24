@@ -36,19 +36,13 @@ export default function ScanPage() {
   const [saving, setSaving] = useState(false);
   const [saveMessage, setSaveMessage] = useState<string | null>(null);
   const [publicId, setPublicId] = useState<string | null>(null);
+  const [shelfId, setShelfId] = useState<string | null>(null);
 
   useEffect(() => {
     if (demo) {
       setStory(demo.story);
       setPhotoUrl(demo.image);
       setSketchUrl(demo.sketch ?? null);
-      addToShelf({
-        id: `demo-${demo.id}`,
-        name: demo.story.name,
-        hook: demo.story.hook,
-        imageDataUrl: demo.image,
-        savedAt: new Date().toISOString(),
-      });
       return;
     }
 
@@ -84,8 +78,10 @@ export default function ScanPage() {
       if (!res.ok) throw new Error(data.error || "Identify failed");
       const nextStory = data.story as Story;
       setStory(nextStory);
+      const nextShelfId = `local-${Date.now()}`;
+      setShelfId(nextShelfId);
       addToShelf({
-        id: `local-${Date.now()}`,
+        id: nextShelfId,
         name: nextStory.name,
         hook: nextStory.hook,
         imageDataUrl: image.dataUrl,
@@ -161,7 +157,7 @@ export default function ScanPage() {
       if (!res.ok) throw new Error(data.error || "Could not save");
       setPublicId(data.id as string);
       addToShelf({
-        id: `public-${data.id}`,
+        id: shelfId ?? `public-${data.id}`,
         name: story.name,
         hook: story.hook,
         imageDataUrl: pending.dataUrl,

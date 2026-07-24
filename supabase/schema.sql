@@ -26,7 +26,32 @@ create policy "Public can read visible scans"
   to anon, authenticated
   using (hidden = false);
 
--- Storage: create bucket "scans" as public in Dashboard.
--- Suggested policies (adjust as needed):
--- - public SELECT on storage.objects where bucket_id = 'scans'
--- - service role handles INSERT/UPDATE/DELETE
+-- Public Storage bucket for scan photos + sketches
+insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
+values (
+  'scans',
+  'scans',
+  true,
+  5242880,
+  array['image/jpeg', 'image/png', 'image/webp']
+)
+on conflict (id) do update
+set public = excluded.public,
+    file_size_limit = excluded.file_size_limit,
+    allowed_mime_types = excluded.allowed_mime_types;
+
+drop policy if exists "Public read scan images" on storage.objects;
+create policy "Public read scan images"
+  on storage.objects
+  for select
+  to public
+  using (bucket_id = 'scans');
+
+-- Workshop waitlist (writes via service role in /api/waitlist)
+create table if not exists public.waitlist (
+  id uuid primary key default gen_random_uuid(),
+  created_at timestamptz not null default now(),
+  email text not null unique
+);
+
+alter table public.waitlist enable row level security;

@@ -2,11 +2,8 @@ import { NextResponse } from "next/server";
 import { randomUUID } from "crypto";
 import { isValidStoryShape } from "@/lib/gemini";
 import { clientIp, rateLimit } from "@/lib/rate-limit";
-import {
-  getSupabaseAdmin,
-  publicStorageUrl,
-  SCANS_BUCKET,
-} from "@/lib/supabase/server";
+import { listPublicScans } from "@/lib/supabase/scans";
+import { getSupabaseAdmin, SCANS_BUCKET } from "@/lib/supabase/server";
 import type { Story } from "@/lib/types";
 
 export const runtime = "nodejs";
@@ -25,30 +22,11 @@ function parseSketchDataUrl(dataUrl?: string | null): {
 }
 
 export async function GET() {
-  const supabase = getSupabaseAdmin();
-  if (!supabase) {
-    return NextResponse.json({ scans: [], configured: false });
-  }
-
-  const { data, error } = await supabase
-    .from("scans")
-    .select("id, created_at, name, story, image_path, sketch_path, hidden")
-    .eq("hidden", false)
-    .order("created_at", { ascending: false })
-    .limit(48);
-
+  const { scans, configured, error } = await listPublicScans();
   if (error) {
-    console.error("scans list error", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error }, { status: 500 });
   }
-
-  const scans = (data ?? []).map((row) => ({
-    ...row,
-    image_url: publicStorageUrl(row.image_path),
-    sketch_url: publicStorageUrl(row.sketch_path),
-  }));
-
-  return NextResponse.json({ scans, configured: true });
+  return NextResponse.json({ scans, configured });
 }
 
 export async function POST(request: Request) {
@@ -112,7 +90,17 @@ export async function POST(request: Request) {
 
     if (imageErr) {
       console.error("image upload error", imageErr);
-      return NextResponse.json({ error: imageErr.message }, { status: 500 });
+      const bucketMissing =
+        imageErr.message.toLowerCase().includes("bucket not found") ||
+        (imageErr as { statusCode?: string }).statusCode === "404";
+      return NextResponse.json(
+        {
+          error: bucketMissing
+            ? 'Storage bucket "scans" is missing. Run `npm run setup:supabase-storage` or create a public "scans" bucket in Supabase Storage.'
+            : imageErr.message,
+        },
+        { status: 500 }
+      );
     }
 
     let sketchPath: string | null = null;
