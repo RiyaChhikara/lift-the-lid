@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --graphite-950: #0b0c0e;
+  --graphite-900: #121417;
+  --graphite-800: #1a1d22;
+  --graphite-700: #2a2f36;
+  --graphite-600: #3d4450;
+  --aluminum: #c8 rec8d0;
+  --aluminum-muted: #8b919c;
+  --brass: #c4a46c;
+  --brass-soft: #a88955;
+  --ink: #e8eaed;
+  --mist: #9aa1ac;
+  --background: var(--graphite-950);
+  --foreground: var(--ink);
+}
+
+/* fix aluminum token (typo guard) */
+:root {
+  --aluminum: #c8ccd0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  min-height: 100vh;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(196, 164, 108, 0.07), transparent),
+    radial-gradient(ellipse 60% 40% at 100% 0%, rgba(138, 150, 170, 0.05), transparent),
+    linear-gradient(180deg, var(--graphite-950) 0%, var(--graphite-900) 100%);
+  background-attachment: fixed;
+}
+
+::selection {
+  background: rgba(196, 164, 108, 0.35);
+  color: var(--ink);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .circuit-grid {
+    background-image:
+      linear-gradient(rgba(200, 204, 208, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200, 204, 208, 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .chip {
+    @apply inline-flex items-center rounded-full border border-graphite-700 px-3 py-1 text-xs tracking-wide text-aluminum-muted;
+    background: color-mix(in srgb, var(--graphite-800) 70%, transparent);
+  }
+}
