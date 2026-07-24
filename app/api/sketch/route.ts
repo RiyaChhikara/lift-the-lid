@@ -32,9 +32,8 @@ export async function POST(request: Request) {
     }
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    // Image-capable Gemini model for sketch generation
     const model = genAI.getGenerativeModel({
-      model: "gemini-2.0-flash-preview-image-generation",
+      model: process.env.GEMINI_SKETCH_MODEL || "gemini-2.5-flash-image",
       generationConfig: {
         responseModalities: ["TEXT", "IMAGE"],
       } as Record<string, unknown>,

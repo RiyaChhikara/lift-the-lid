@@ -8,7 +8,7 @@ Mobile-first Next.js 14 field guide: photograph an everyday object, get a teardo
 
 - Next.js 14 (App Router) + TypeScript + Tailwind
 - Gemini (`gemini-flash-latest`) for identify JSON
-- Gemini image model for industrial design sketches
+- Gemini (`gemini-2.5-flash-image`) for industrial design sketches
 - Supabase (Postgres + Storage) for the public gallery
 
 ## Setup
