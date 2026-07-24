@@ -88,3 +88,6 @@ higgsfield product-photoshoot create \
 ## Project rules (not a Skill)
 
 Voice/schema/art live in [`.cursor/rules/lift-the-lid.mdc`](.cursor/rules/lift-the-lid.mdc). Do not create a Cursor Skill for this app.
+
+## Prompt sandbox to refine the output: 
+https://partyrock.aws/u/ninelabs/whqgxIN6J/lift-the-lid
