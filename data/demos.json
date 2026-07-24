@@ -3,7 +3,7 @@
     {
       "id": "phone",
       "image": "/demos/phone.jpg",
-      "sketch": "/demos/phone-sketch.jpg",
+      "sketch": "/demos/phone-sketch.png",
       "story": {
         "name": "Smartphone",
         "hook": "A glass sandwich that runs a radio network, a darkroom, and a bank in your pocket.",
