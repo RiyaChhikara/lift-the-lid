@@ -1,0 +1,175 @@
+{
+  "demos": [
+    {
+      "id": "phone",
+      "image": "/demos/phone.jpg",
+      "sketch": "/demos/phone-sketch.jpg",
+      "story": {
+        "name": "Smartphone",
+        "hook": "A glass sandwich that runs a radio network, a darkroom, and a bank in your pocket.",
+        "confidence": "high",
+        "layers": [
+          {
+            "layer": "Cover glass",
+            "role": "Touch surface and scratch shield for the display stack.",
+            "marvel": "Chemically strengthened glass trades thickness for toughness by swapping sodium ions for larger potassium ions under the surface."
+          },
+          {
+            "layer": "OLED panel",
+            "role": "Emits light per pixel and forms the image you see.",
+            "marvel": "Each pixel is its own tiny light source, so blacks are achieved by turning pixels off instead of blocking a backlight."
+          },
+          {
+            "layer": "Chassis and camera module",
+            "role": "Structural frame that holds sensors, antennas, and optics in alignment.",
+            "marvel": "Multiple camera lenses share one rigid module so software can stitch depth and zoom without the phones warping between shots."
+          },
+          {
+            "layer": "Battery",
+            "role": "Stores chemical energy for hours of radio, compute, and light.",
+            "marvel": "A pouch cell fills nearly every unused cubic millimeter; capacity is limited more by volume than by chemistry breakthroughs."
+          },
+          {
+            "layer": "Logic board",
+            "role": "Hosts the system-on-chip, memory, power management, and radios.",
+            "marvel": "Billions of transistors sit under heat-spreading shields smaller than a postage stamp, switching billions of times per second on a few watts."
+          },
+          {
+            "layer": "Antenna lines and flex cables",
+            "role": "Carry RF and data between board, radios, cameras, and buttons.",
+            "marvel": "Flexible printed circuits fold through millimeters of clearance so the sealed shell can still be serviced in layers."
+          }
+        ],
+        "materials": [
+          {
+            "material": "Aluminosilicate glass",
+            "why": "Hard, optically clear, and ion-exchange toughened for pocket abrasion."
+          },
+          {
+            "material": "Aluminum or stainless frame",
+            "why": "Stiffness, heat spreading, and a precision rail for buttons and seals."
+          },
+          {
+            "material": "Lithium-ion pouch cell",
+            "why": "Highest practical energy density that still fits a thin slab."
+          },
+          {
+            "material": "Silicon SoC package",
+            "why": "Compute, graphics, and neural work share one thermally managed die stack."
+          }
+        ],
+        "the_marvel": "The phone is a radio instrument first. Cameras, screens, and apps only work because antennas, power amplifiers, and baseband silicon keep a negotiated link to towers moving past you at walking speed. Everything else is software riding that link.",
+        "history": "Before this slab, a camera, calendar, map, music player, and phone were separate tools with separate batteries. Feature phones compressed calling and text; smartphones collapsed the remaining pocket gadgets into one sealed computer with a touch glass face.",
+        "look_closer": "Tilt the screen under a bright light and find the thin black border where the OLED stack ends and the sealed glass begins."
+      }
+    },
+    {
+      "id": "kettle",
+      "image": "/demos/kettle.jpg",
+      "sketch": "/demos/kettle-sketch.jpg",
+      "story": {
+        "name": "Electric kettle",
+        "hook": "A jug that boils water by turning electricity into heat with almost nothing moving.",
+        "confidence": "high",
+        "layers": [
+          {
+            "layer": "Lid and spout",
+            "role": "Contain steam and aim the pour.",
+            "marvel": "Steam vents are sized so pressure stays gentle while still triggering the auto-off sensor quickly."
+          },
+          {
+            "layer": "Body and handle",
+            "role": "Hold a liter of water and keep your hand away from the hot wall.",
+            "marvel": "Double-wall or polymer sleeves create an air gap so the outer shell stays touchable while the inner vessel runs near 100°C."
+          },
+          {
+            "layer": "Heating element plate",
+            "role": "Converts current into heat at the base of the water chamber.",
+            "marvel": "A concealed element bonded under a stainless plate heats the water through metal, so scale forms on a cleanable surface instead of on a coiled wire."
+          },
+          {
+            "layer": "Thermal cut-out and steam switch",
+            "role": "Cuts power when water boils or the kettle runs dry.",
+            "marvel": "Rising steam warps a bimetallic strip that clicks the switch open — a mechanical thermostat with no software."
+          },
+          {
+            "layer": "Base contacts",
+            "role": "Deliver mains power through a 360° connector under the jug.",
+            "marvel": "Spring-loaded contacts let you dock the kettle at any angle while keeping live pins recessed when the jug is lifted."
+          }
+        ],
+        "materials": [
+          {
+            "material": "Stainless steel vessel",
+            "why": "Food-safe, corrosion resistant, and conducts heat evenly across the base plate."
+          },
+          {
+            "material": "Polymer handle and base",
+            "why": "Electrical insulation and a cooler grip where metal would burn."
+          },
+          {
+            "material": "Nichrome heating element",
+            "why": "Stable resistance wire that survives repeated red-heat cycles."
+          }
+        ],
+        "the_marvel": "Boiling is a control problem as much as a heat problem. The kettle must dump roughly the energy to raise a kilogram of water by eighty degrees, then shut itself down within seconds of a rolling boil using only steam and a bent strip of metal.",
+        "history": "Open fires and stovetop kettles once meant watching the pot. Immersion heaters and early electric jugs brought boiling indoors; sealed concealed-element kettles made the appliance automatic, cordless, and safe enough for a weekday kitchen counter.",
+        "look_closer": "Look under the jug for the concentric power ring — that circle is how a cordless kettle docks without a dangling cord."
+      }
+    },
+    {
+      "id": "headphones",
+      "image": "/demos/headphones.jpg",
+      "sketch": "/demos/headphones-sketch.jpg",
+      "story": {
+        "name": "Over-ear headphones",
+        "hook": "Two tiny motors that push air so precisely your brain hears a room that is not there.",
+        "confidence": "high",
+        "layers": [
+          {
+            "layer": "Ear cushions and headband",
+            "role": "Seal around the ear and distribute clamp force.",
+            "marvel": "Memory-foam pads create an acoustic gasket; a few millimeters of leak can erase bass more than a weaker driver ever could."
+          },
+          {
+            "layer": "Earcup shell",
+            "role": "Houses the driver and shapes the cavity you listen into.",
+            "marvel": "Internal volume and venting are tuned like a miniature loudspeaker cabinet so resonances sit outside the music band."
+          },
+          {
+            "layer": "Dynamic driver",
+            "role": "Moves a diaphragm to create sound pressure.",
+            "marvel": "A voice coil in a permanent magnetic field turns milliwatts of current into millimeters of air motion across the full audible range."
+          },
+          {
+            "layer": "Yoke and hinge",
+            "role": "Keeps drivers aimed at your ears while folding for storage.",
+            "marvel": "Hinges must survive thousands of folds without changing the seal geometry that the acoustics depend on."
+          },
+          {
+            "layer": "Cable or wireless module",
+            "role": "Delivers analog audio or a decoded digital stream to the drivers.",
+            "marvel": "In wireless sets, a radio, battery, and DAC share the same cup that must still stay light enough for hours on your head."
+          }
+        ],
+        "materials": [
+          {
+            "material": "Neodymium magnets",
+            "why": "Strong field in a small volume so drivers stay light and efficient."
+          },
+          {
+            "material": "Polymer diaphragm",
+            "why": "Stiff and light enough to follow fast transients without ringing."
+          },
+          {
+            "material": "Protein leather or fabric pads",
+            "why": "Skin comfort plus a controllable acoustic seal."
+          }
+        ],
+        "the_marvel": "Headphones cheat distance. Instead of filling a room, they control a few cubic centimeters of air next to your eardrums — so small magnets and thin diaphragms can rival living-room speakers for intimacy, detail, and perceived bass.",
+        "history": "Telephone operators wore early headsets as tools, not entertainment. Stereo hifi headphones arrived with domestic audio; noise-cancelling and Bluetooth later turned the same driver geometry into a portable private room.",
+        "look_closer": "Press gently on an earcup and feel the cushion rebound — that foam seal is doing as much acoustic work as the shiny driver behind it."
+      }
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+---
+description: Lift the Lid voice, schema, and art direction
+globs:
+  - "**/*.{ts,tsx,css,json,md}"
+alwaysApply: true
+---
+
+# Lift the Lid
+
+Field guide to the built world. Voice matches quiet industrial-design writing — Super Normal, Industrial Design A–Z, Judge This first impressions. Show, don't label. No "fascinating" / "amazing".
+
+## Story JSON schema
+
+Identify responses must match:
+
+```json
+{
+  "name": "",
+  "hook": "",
+  "confidence": "high|medium|low",
+  "layers": [{ "layer": "", "role": "", "marvel": "" }],
+  "materials": [{ "material": "", "why": "" }],
+  "the_marvel": "",
+  "history": "",
+  "look_closer": ""
+}
+```
+
+4–7 layers, outside-in. Prompt lives in `lib/prompt.ts`.
+
+## Art
+
+Dark graphite, aluminum, soft brass. Serif display + restrained sans. Hardware-clean industrial design sketches — not purple neon AI chrome. Compress client images to max 1280px JPEG ~0.8 before API POSTs.
+
+## Public gallery
+
+`/api/scans` POST: rate-limit by IP, reject `confidence: "low"`, validate story shape, `hidden` boolean for moderation. Share pages `/s/[id]` need Open Graph via `generateMetadata` (scan photo + object name).
