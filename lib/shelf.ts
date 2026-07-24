@@ -1,5 +1,5 @@
 const SHELF_KEY = "lift-the-lid:shelf";
-const MAX_ITEMS = 24;
+const MAX_ITEMS = 8;
 
 import type { ShelfItem } from "./types";
 
@@ -24,4 +24,9 @@ export function addToShelf(item: ShelfItem): ShelfItem[] {
   const next = [item, ...readShelf().filter((x) => x.id !== item.id)].slice(0, MAX_ITEMS);
   writeShelf(next);
   return next;
+}
+
+export function clearShelf(): void {
+  if (typeof window === "undefined") return;
+  localStorage.removeItem(SHELF_KEY);
 }

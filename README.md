@@ -23,11 +23,31 @@ npm run dev
 ### Supabase
 
 1. Create a project.
-2. Run [`supabase/schema.sql`](supabase/schema.sql) in the SQL editor.
-3. Create a **public** Storage bucket named `scans`.
+2. Run [`supabase/schema.sql`](supabase/schema.sql) in the SQL editor (table + storage bucket + policies).
+3. Or, if the table already exists, create storage only:
+   ```bash
+   npm run setup:supabase-storage
+   ```
 4. Put URL + anon key + service role key in `.env.local`.
 
 Without Supabase, scanning and the local shelf still work; public save returns 503 until configured.
+
+## Deploy to Vercel
+
+Yes — this is ready for a simple Vercel deploy.
+
+1. Push the repo to GitHub.
+2. Import the project in [Vercel](https://vercel.com/new).
+3. Add environment variables (same as `.env.local`):
+   - `GEMINI_API_KEY`
+   - `GEMINI_SKETCH_MODEL` (optional)
+   - `NEXT_PUBLIC_SITE_URL` → your production URL, e.g. `https://your-app.vercel.app`
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+   - `SUPABASE_SERVICE_ROLE_KEY`
+4. Deploy. Run `supabase/schema.sql` and `npm run setup:supabase-storage` against your production Supabase project if not done already.
+
+Waitlist emails are stored in Supabase (`waitlist` table) when configured; otherwise they only appear in server logs during local dev.
 
 ## Routes
 

@@ -2,17 +2,32 @@ import Image from "next/image";
 import Link from "next/link";
 import type { PublicScan } from "@/lib/types";
 
-export function GalleryGrid({ scans }: { scans: PublicScan[] }) {
+export function GalleryGrid({
+  scans,
+  compact = false,
+}: {
+  scans: PublicScan[];
+  compact?: boolean;
+}) {
   if (scans.length === 0) {
     return (
-      <p className="mt-10 text-mist">
-        No public scans yet. Be the first to lift a lid.
+      <p className={compact ? "mt-6 text-sm text-mist" : "mt-10 text-mist"}>
+        No public scans yet.{" "}
+        <Link href="/scan" className="text-brass hover:text-brass-soft">
+          Be the first to lift a lid.
+        </Link>
       </p>
     );
   }
 
   return (
-    <div className="mt-10 grid gap-6 sm:grid-cols-2">
+    <div
+      className={
+        compact
+          ? "mt-6 grid gap-4 sm:grid-cols-2"
+          : "mt-10 grid gap-6 sm:grid-cols-2"
+      }
+    >
       {scans.map((scan) => (
         <Link key={scan.id} href={`/s/${scan.id}`} className="group block">
           <div className="relative aspect-[4/3] overflow-hidden rounded-sm bg-graphite-800">

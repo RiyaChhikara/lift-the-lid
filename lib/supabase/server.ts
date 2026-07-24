@@ -1,7 +1,5 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
-let adminClient: SupabaseClient | null = null;
-
 function cleanSupabaseUrl(raw: string | undefined): string | undefined {
   if (!raw) return undefined;
   return raw
@@ -18,12 +16,11 @@ export function getSupabaseAdmin(): SupabaseClient | null {
   const url = cleanSupabaseUrl(process.env.NEXT_PUBLIC_SUPABASE_URL);
   const key = cleanEnv(process.env.SUPABASE_SERVICE_ROLE_KEY);
   if (!url || !key) return null;
-  if (!adminClient) {
-    adminClient = createClient(url, key, {
-      auth: { persistSession: false, autoRefreshToken: false },
-    });
-  }
-  return adminClient;
+
+  // Fresh client per call — avoids stale singletons across Next.js RSC/route bundles.
+  return createClient(url, key, {
+    auth: { persistSession: false, autoRefreshToken: false },
+  });
 }
 
 export function publicStorageUrl(path: string | null | undefined): string | null {
