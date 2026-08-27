@@ -1,4 +1,5 @@
 import type { Story } from "@/lib/types";
+import { CuriosityMap } from "./CuriosityMap";
 import { LayerStack } from "./LayerStack";
 import { SketchCompare } from "./SketchCompare";
 
@@ -18,8 +19,8 @@ export function StoryView({
   actions,
 }: Props) {
   return (
-    <article className="mx-auto w-full max-w-2xl px-5 pb-20 pt-6">
-      <header className="animate-fade-up">
+    <article className="mx-auto w-full max-w-4xl px-5 pb-20 pt-8">
+      <header className="animate-fade-up max-w-2xl">
         <p className="text-xs uppercase tracking-[0.2em] text-brass">
           {story.confidence} confidence
         </p>
@@ -38,9 +39,10 @@ export function StoryView({
       />
 
       <LayerStack story={story} />
+      <CuriosityMap story={story} />
 
       {story.materials.length > 0 && (
-        <section className="mt-12">
+        <section className="mt-16 max-w-2xl">
           <h2 className="font-display text-2xl text-ink">Made of</h2>
           <div className="mt-5 flex flex-wrap gap-2">
             {story.materials.map((m) => (
@@ -60,21 +62,21 @@ export function StoryView({
       )}
 
       {story.the_marvel && (
-        <section className="mt-12 rounded-sm border border-brass/30 bg-graphite-900/80 px-5 py-6 shadow-glow">
+        <section className="mt-16 max-w-2xl rounded-[1.5rem] border border-brass/30 bg-graphite-900/80 px-5 py-6 shadow-glow sm:px-7 sm:py-8">
           <h2 className="font-display text-2xl text-brass">The marvel</h2>
           <p className="mt-3 text-[15px] leading-relaxed text-ink">{story.the_marvel}</p>
         </section>
       )}
 
       {story.history && (
-        <section className="mt-12">
+        <section className="mt-16 max-w-2xl">
           <h2 className="font-display text-2xl text-ink">It wasn&apos;t always like this</h2>
           <p className="mt-4 text-[15px] leading-relaxed text-mist">{story.history}</p>
         </section>
       )}
 
       {story.look_closer && (
-        <section className="mt-12 border-t border-graphite-800 pt-10">
+        <section className="mt-16 max-w-2xl border-t border-graphite-700 pt-10">
           <h2 className="font-display text-2xl text-ink">Look closer</h2>
           <p className="mt-4 text-[15px] leading-relaxed text-aluminum">{story.look_closer}</p>
         </section>

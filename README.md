@@ -2,7 +2,7 @@
 
 The user manual nobody reads. Brought to life.
 
-Mobile-first Next.js 14 field guide: photograph an everyday object, get a teardown-style engineering story, optionally turn it into an industrial design sketch, and share it in a public gallery.
+Mobile-first Next.js 14 field guide: photograph an everyday object, get a teardown-style engineering story, follow a visual curiosity map, optionally turn it into an industrial design sketch, and share it in a public gallery.
 
 ## Stack
 
@@ -10,6 +10,13 @@ Mobile-first Next.js 14 field guide: photograph an everyday object, get a teardo
 - Gemini (`gemini-flash-latest`) for identify JSON
 - Gemini (`gemini-2.5-flash-image`) for industrial design sketches
 - Supabase (Postgres + Storage) for the public gallery
+
+## What happens after a scan
+
+Every story now includes a curiosity map. It connects the object to its visible layers,
+materials, history, and a short set of follow-up questions. Older stories and the demo
+objects still render safely: when the model does not return curiosity threads, the app
+derives them from the existing story fields.
 
 ## Setup
 
@@ -30,7 +37,8 @@ npm run dev
    ```
 4. Put URL + anon key + service role key in `.env.local`.
 
-Without Supabase, scanning and the local shelf still work; public save returns 503 until configured.
+Without Supabase, scanning and the local shelf still work. The public gallery shows a
+clear paused state, and public save returns 503 until the storage connection is restored.
 
 ## Deploy to Vercel
 

@@ -50,15 +50,15 @@ export default function RootLayout({
       <body className={`${display.variable} ${sans.variable} font-sans antialiased`}>
         <div className="relative min-h-screen">
           <div className="pointer-events-none absolute inset-0 circuit-grid opacity-40" aria-hidden />
-          <header className="relative z-10 mx-auto flex w-full max-w-3xl items-center justify-between px-5 pb-2 pt-6">
-            <Link href="/" className="font-display text-lg tracking-tight text-ink">
-              Lift the Lid
+          <header className="relative z-10 mx-auto flex w-full max-w-5xl items-center justify-between px-5 pb-2 pt-6">
+            <Link href="/" className="font-display text-lg tracking-tight text-ink transition hover:text-brass">
+              Lift the Lid<span className="text-brass">.</span>
             </Link>
-            <nav className="flex items-center gap-5 text-sm text-mist">
-              <Link href="/scan" className="transition hover:text-aluminum">
+            <nav className="flex items-center gap-2 rounded-full border border-graphite-700 bg-graphite-950/55 p-1 text-sm text-mist">
+              <Link href="/scan" className="rounded-full px-3 py-1.5 transition hover:bg-graphite-800 hover:text-ink">
                 Scan
               </Link>
-              <Link href="/gallery" className="transition hover:text-aluminum">
+              <Link href="/gallery" className="rounded-full px-3 py-1.5 transition hover:bg-graphite-800 hover:text-ink">
                 Gallery
               </Link>
             </nav>

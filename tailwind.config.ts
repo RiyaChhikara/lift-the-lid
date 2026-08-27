@@ -24,6 +24,10 @@ const config: Config = {
           DEFAULT: "var(--brass)",
           soft: "var(--brass-soft)",
         },
+        teal: {
+          DEFAULT: "var(--teal)",
+          soft: "var(--teal-soft)",
+        },
         ink: "var(--ink)",
         mist: "var(--mist)",
       },

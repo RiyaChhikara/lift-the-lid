@@ -11,6 +11,12 @@ export type Material = {
   why: string;
 };
 
+export type CuriosityThread = {
+  label: string;
+  question: string;
+  answer: string;
+};
+
 export type Story = {
   name: string;
   hook: string;
@@ -20,6 +26,7 @@ export type Story = {
   the_marvel: string;
   history: string;
   look_closer: string;
+  curiosity?: CuriosityThread[];
 };
 
 export type DemoEntry = {

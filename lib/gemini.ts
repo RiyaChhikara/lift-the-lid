@@ -48,6 +48,18 @@ export function normalizeStory(parsed: Partial<Story>): Story {
         .filter((m) => m.material)
     : [];
 
+  const curiosity = Array.isArray(parsed.curiosity)
+    ? parsed.curiosity
+        .filter((thread) => thread && typeof thread === "object")
+        .map((thread) => ({
+          label: String(thread.label ?? "Follow the thread").trim(),
+          question: String(thread.question ?? "").trim(),
+          answer: String(thread.answer ?? "").trim(),
+        }))
+        .filter((thread) => thread.question && thread.answer)
+        .slice(0, 4)
+    : [];
+
   return {
     name: String(parsed.name ?? "Unknown object").trim() || "Unknown object",
     hook: String(parsed.hook ?? "").trim(),
@@ -57,6 +69,7 @@ export function normalizeStory(parsed: Partial<Story>): Story {
     the_marvel: String(parsed.the_marvel ?? "").trim(),
     history: String(parsed.history ?? "").trim(),
     look_closer: String(parsed.look_closer ?? "").trim(),
+    ...(curiosity.length > 0 ? { curiosity } : {}),
   };
 }
 
@@ -73,5 +86,19 @@ export function isValidStoryShape(story: unknown): story is Story {
   if (typeof s.the_marvel !== "string") return false;
   if (typeof s.history !== "string") return false;
   if (typeof s.look_closer !== "string") return false;
+  if (
+    s.curiosity !== undefined &&
+    (!Array.isArray(s.curiosity) ||
+      s.curiosity.some(
+        (thread) =>
+          !thread ||
+          typeof thread !== "object" ||
+          typeof thread.label !== "string" ||
+          typeof thread.question !== "string" ||
+          typeof thread.answer !== "string"
+      ))
+  ) {
+    return false;
+  }
   return true;
 }
