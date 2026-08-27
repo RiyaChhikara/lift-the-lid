@@ -2,6 +2,7 @@ import type { Story } from "@/lib/types";
 import { CuriosityMap } from "./CuriosityMap";
 import { LayerStack } from "./LayerStack";
 import { SketchCompare } from "./SketchCompare";
+import { WikimediaStickers } from "./WikimediaStickers";
 
 type Props = {
   story: Story;
@@ -40,6 +41,7 @@ export function StoryView({
 
       <LayerStack story={story} />
       <CuriosityMap story={story} />
+      <WikimediaStickers objectName={story.name} />
 
       {story.materials.length > 0 && (
         <section className="mt-16 max-w-2xl">

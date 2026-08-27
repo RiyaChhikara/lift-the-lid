@@ -10,16 +10,18 @@ Date: 27 August 2026
 - Restyled the teardown, sketch, demo, shelf, and gallery cards so the page feels more like a collection of annotated field notes than a plain results list.
 - Replaced the public gallery's raw `TypeError: fetch failed` state with a clear paused state and a retry action.
 - Marked `/api/scans` as dynamic so the gallery does not accidentally serve a stale response after a deployment.
+- Added a Wikimedia reference trail after the curiosity map. Wikipedia results link to the relevant page, while Commons results render as cutesy stickers with source-page, attribution, and license details.
 
 ## Key decisions
 
 - The curiosity map is dependency-free and uses the existing story fields, so the app stays lightweight and the UI works even when the model returns an older schema.
 - The model can now return three to four grounded threads, but the UI never requires them to render a scan.
 - Low-confidence scans remain local-only. Public sharing keeps the existing moderation guard.
+- Reference cards are signposts only. The app does not copy long encyclopedia text or host the source images.
 
 ## Known limitation
 
-The current local environment points at a Supabase hostname that does not resolve, so `/api/scans` returns a friendly 503 and the gallery stays paused. Scanning, the local shelf, demos, and share-page UI still build correctly. Restoring the Supabase URL and storage credentials will bring public reads and saves back without another code change.
+The current local environment points at a Supabase hostname that does not resolve, so `/api/scans` returns a friendly 503 and the gallery stays paused. Scanning, the local shelf, demos, share-page UI, and Wikimedia reference trail still build correctly. Restoring the Supabase URL and storage credentials will bring public reads and saves back without another code change.
 
 ## Instagram-ready summary
 
