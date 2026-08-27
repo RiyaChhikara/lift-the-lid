@@ -18,6 +18,11 @@ materials, history, and a short set of follow-up questions. Older stories and th
 objects still render safely: when the model does not return curiosity threads, the app
 derives them from the existing story fields.
 
+The scan result also adds a Wikimedia reference trail. It searches Wikipedia for related
+pages and Wikimedia Commons for image thumbnails, then shows each result as a linked
+sticker with attribution and license text. Lift the Lid points outward rather than
+trying to become another encyclopedia.
+
 ## Setup
 
 ```bash
@@ -68,6 +73,7 @@ Waitlist emails are stored in Supabase (`waitlist` table) when configured; other
 | `/api/identify` | Gemini story JSON |
 | `/api/sketch` | Industrial design sketch image |
 | `/api/scans` | Guarded public create + list |
+| `/api/wikimedia` | Wikipedia and Wikimedia Commons reference search |
 | `/api/waitlist` | Logs email for now |
 
 ## Client compression

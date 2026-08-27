@@ -56,3 +56,25 @@ export type PublicScan = {
   image_url?: string;
   sketch_url?: string | null;
 };
+
+export type WikipediaReference = {
+  title: string;
+  summary: string;
+  url: string;
+  thumbnailUrl?: string;
+};
+
+export type WikimediaSticker = {
+  title: string;
+  imageUrl: string;
+  pageUrl: string;
+  license: string;
+  attribution: string;
+};
+
+export type WikimediaReferences = {
+  query: string;
+  wikipedia: WikipediaReference[];
+  commons: WikimediaSticker[];
+  error?: string;
+};
