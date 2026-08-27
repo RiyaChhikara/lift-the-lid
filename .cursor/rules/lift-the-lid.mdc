@@ -22,16 +22,18 @@ Identify responses must match:
   "materials": [{ "material": "", "why": "" }],
   "the_marvel": "",
   "history": "",
-  "look_closer": ""
+  "look_closer": "",
+  "curiosity": [{ "label": "Inside", "question": "", "answer": "" }]
 }
 ```
 
-4–7 layers, outside-in. Prompt lives in `lib/prompt.ts`.
+4–7 layers, outside-in, plus 3–4 curiosity threads that lead into parts, materials,
+history, or something the user can inspect. Prompt lives in `lib/prompt.ts`.
 
 ## Art
 
-Dark graphite, aluminum, soft brass. Serif display + restrained sans. Hardware-clean industrial design sketches — not purple neon AI chrome. Compress client images to max 1280px JPEG ~0.8 before API POSTs.
+Warm paper, ink, soft brass, and a quiet teal. Serif display + restrained sans. Hardware-clean industrial design sketches with a little field-note texture, not purple neon AI chrome. Compress client images to max 1280px JPEG ~0.8 before API POSTs.
 
 ## Public gallery
 
-`/api/scans` POST: rate-limit by IP, reject `confidence: "low"`, validate story shape, `hidden` boolean for moderation. Share pages `/s/[id]` need Open Graph via `generateMetadata` (scan photo + object name).
+`/api/scans` POST: rate-limit by IP, reject `confidence: "low"`, validate story shape, `hidden` boolean for moderation. Gallery read failures return a safe 503 message instead of leaking storage or DNS errors. Share pages `/s/[id]` need Open Graph via `generateMetadata` (scan photo + object name).

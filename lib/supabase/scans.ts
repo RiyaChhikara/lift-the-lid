@@ -20,7 +20,12 @@ export async function listPublicScans(limit = 48): Promise<{
 
   if (error) {
     console.error("listPublicScans error", error);
-    return { scans: [], configured: true, error: error.message };
+    const message = error.message.toLowerCase();
+    const friendlyError =
+      message.includes("fetch failed") || message.includes("enotfound")
+        ? "The public gallery is having trouble reconnecting. Scans still work on your shelf."
+        : "The public gallery is unavailable right now. Scans still work on your shelf.";
+    return { scans: [], configured: true, error: friendlyError };
   }
 
   const scans = (data ?? []).map((row) => ({

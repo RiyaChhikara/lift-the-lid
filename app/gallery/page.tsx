@@ -8,11 +8,17 @@ export const metadata: Metadata = {
 
 export default function GalleryPage() {
   return (
-    <div className="mx-auto w-full max-w-3xl px-5 pb-20 pt-10">
-      <h1 className="font-display text-4xl text-ink">Public gallery</h1>
-      <p className="mt-3 max-w-md text-mist">
-        Teardowns people chose to share. Quiet objects, opened carefully.
-      </p>
+    <div className="mx-auto w-full max-w-4xl px-5 pb-20 pt-12">
+      <div className="max-w-2xl">
+        <p className="text-xs uppercase tracking-[0.2em] text-brass">A shared shelf</p>
+        <h1 className="mt-3 font-display text-4xl tracking-tight text-ink sm:text-5xl">
+          Public gallery
+        </h1>
+        <p className="mt-4 max-w-xl text-lg leading-relaxed text-mist">
+          Teardowns people chose to share. Quiet objects, opened carefully, with a few
+          rabbit holes left visible.
+        </p>
+      </div>
       <PublicGallery />
     </div>
   );

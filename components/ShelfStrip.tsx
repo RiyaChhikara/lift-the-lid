@@ -32,7 +32,7 @@ export function ShelfStrip() {
             clearShelf();
             setItems([]);
           }}
-          className="text-xs text-graphite-500 transition hover:text-mist"
+          className="text-xs text-mist transition hover:text-ink"
         >
           Clear
         </button>

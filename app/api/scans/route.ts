@@ -8,6 +8,7 @@ import type { Story } from "@/lib/types";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
+export const dynamic = "force-dynamic";
 
 const MAX_IMAGE_B64 = 3_500_000;
 
@@ -24,7 +25,7 @@ function parseSketchDataUrl(dataUrl?: string | null): {
 export async function GET() {
   const { scans, configured, error } = await listPublicScans();
   if (error) {
-    return NextResponse.json({ error }, { status: 500 });
+    return NextResponse.json({ scans: [], configured, error }, { status: 503 });
   }
   return NextResponse.json({ scans, configured });
 }

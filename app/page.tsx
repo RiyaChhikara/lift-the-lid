@@ -15,10 +15,11 @@ export default function HomePage() {
       <Hero />
       <DemoCards demos={demos} />
       <ShelfStrip />
-      <section className="mx-auto w-full max-w-3xl px-5 pb-16">
+      <section className="mx-auto w-full max-w-4xl px-5 pb-16">
         <div className="flex items-end justify-between gap-4">
           <div>
-            <h2 className="font-display text-2xl text-ink">Public gallery</h2>
+            <p className="text-xs uppercase tracking-[0.2em] text-brass">Shared shelf</p>
+            <h2 className="mt-2 font-display text-3xl text-ink">Public gallery</h2>
             <p className="mt-2 max-w-md text-sm text-mist">
               Shared teardowns from people looking closer at the ordinary.
             </p>

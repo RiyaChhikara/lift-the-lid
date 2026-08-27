@@ -30,7 +30,7 @@ export function GalleryGrid({
     >
       {scans.map((scan) => (
         <Link key={scan.id} href={`/s/${scan.id}`} className="group block">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-sm bg-graphite-800">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-[1.25rem] border border-graphite-700 bg-graphite-800">
             {scan.image_url ? (
               <Image
                 src={scan.image_url}
@@ -46,8 +46,11 @@ export function GalleryGrid({
               </div>
             )}
           </div>
-          <h2 className="mt-3 font-display text-xl text-ink">{scan.name}</h2>
-          <p className="mt-1 line-clamp-2 text-sm text-mist">{scan.story.hook}</p>
+          <div className="px-1 pt-3">
+            <p className="text-[10px] uppercase tracking-[0.18em] text-aluminum-muted">Shared field note</p>
+            <h2 className="mt-2 font-display text-xl text-ink">{scan.name}</h2>
+            <p className="mt-1 line-clamp-2 text-sm text-mist">{scan.story.hook}</p>
+          </div>
         </Link>
       ))}
     </div>

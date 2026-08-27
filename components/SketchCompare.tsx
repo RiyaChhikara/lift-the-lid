@@ -14,10 +14,11 @@ export function SketchCompare({ photoUrl, sketchUrl, name, loading }: Props) {
   const canToggle = Boolean(sketchUrl);
 
   return (
-    <section className="mt-12">
+    <section className="mt-14 max-w-3xl">
       <div className="flex items-end justify-between gap-4">
         <div>
-          <h2 className="font-display text-2xl text-ink">Industrial design sketch</h2>
+          <p className="text-xs uppercase tracking-[0.2em] text-brass">See it another way</p>
+          <h2 className="mt-2 font-display text-3xl text-ink">Industrial design sketch</h2>
           <p className="mt-2 text-sm text-mist">
             Super Normal line work — the object as a field-guide plate.
           </p>
@@ -32,7 +33,7 @@ export function SketchCompare({ photoUrl, sketchUrl, name, loading }: Props) {
           </button>
         )}
       </div>
-      <div className="relative mt-6 aspect-[4/5] overflow-hidden rounded-sm bg-graphite-800 shadow-glow sm:aspect-[5/4]">
+      <div className="relative mt-6 aspect-[4/5] overflow-hidden rounded-[1.5rem] border border-graphite-700 bg-graphite-800 shadow-glow sm:aspect-[5/4]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={showSketch && sketchUrl ? sketchUrl : photoUrl}
